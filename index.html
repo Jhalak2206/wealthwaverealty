@@ -253,6 +253,18 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            .card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.card-link:hover .grid-item {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
         }
 
         .grid-item:hover {
@@ -425,13 +437,14 @@
         <h2>Our Core Values</h2>
         <p>At WealthWave Realty, we are committed to integrity, excellence, and delivering superior results...</p>
         <div class="grid-container">
-            <div class="grid-item">
-                <img src="https://images.unsplash.com/photo-1560518883-ff51f67f9e8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Luxury Interior">
-                <div class="grid-item-content">
-                    <h3>Exclusivity</h3>
-                    <p>Access to a curated selection of properties not found elsewhere, ensuring a unique and privileged experience.</p>
-                </div>
-            </div>
+            <a href="exclusivity.html" class="card-link">
+  <div class="grid-item">
+    <img src="images/luxury-interior.jpg" alt="Luxury Interior">
+    <h3>Exclusivity</h3>
+    <p>Access to a curated selection of properties not found elsewhere, ensuring a unique and privileged experience.</p>
+  </div>
+</a>
+
             <div class="grid-item">
                 <img src="https://images.unsplash.com/photo-1568605117036-ad3f95f72033?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Modern Architecture">
                 <div class="grid-item-content">
