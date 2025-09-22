@@ -13,6 +13,102 @@
             background-color: #f4f4f4;
             color: #333;
         }
+          body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding-top: 100px; /* Adjusted padding to accommodate fixed header AND ticker */
+        }
+
+        /* --- Main Header (Logo and Navigation) --- */
+        .main-header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 60px;
+            box-sizing: border-box;
+        }
+
+        .main-header .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #ffd700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        /* --- Separate Scrolling Ticker Section --- */
+        .ticker-section {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: #ffd700;
+            color: #1a1a1a;
+            padding: 8px 0;
+            overflow: hidden;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            height: 40px;
+            box-sizing: border-box;
+        }
+
+        .ticker {
+            display: inline-block;
+            animation: scroll-left 25s linear infinite;
+            padding-right: 100%;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .ticker span {
+            margin-right: 40px;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+        
         .container {
             max-width: 800px;
             margin: 0 auto;
