@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experion Elements - WealthWave Realty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS from your index.html */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding-top: 100px; /* Adjusted padding to accommodate fixed header AND ticker */
+        }
+
+        /* --- Main Header (Logo and Navigation) --- */
+        .main-header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: 60px;
+            box-sizing: border-box;
+        }
+
+        .main-header .logo { /* Changed from .header .logo */
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #ffd700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        /* --- Separate Scrolling Ticker Section --- */
+        .ticker-section {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 100%;
+            background-color: #ffd700;
+            color: #1a1a1a;
+            padding: 8px 0;
+            overflow: hidden;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            height: 40px;
+            box-sizing: border-box;
+        }
+
+        .ticker {
+            display: inline-block;
+            animation: scroll-left 25s linear infinite;
+            padding-right: 100%;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .ticker span {
+            margin-right: 40px;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* General Section Styles */
+        .section {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: #333;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #ffd700;
+            border-radius: 2px;
+        }
+
+        /* Styles for the property details section on the new page */
+        .property-details-section {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .property-details-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .property-card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            max-width: 800px;
+            text-align: left;
+            overflow: hidden;
+        }
+
+        .property-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .property-card-content {
+            padding: 25px;
+        }
+
+        .property-card-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: #333;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        .property-card-content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .property-card-content ul li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .property-card-content strong {
+            color: #333;
+        }
+
+        /* Gold button styling */
+        .btn-gold {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #333;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-gold:hover {
+            background-color: #e6c200;
+            transform: translateY(-2px);
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 50px 30px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .footer .social-links a {
+            color: #ffd700;
+            margin: 0 15px;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-links a:hover {
+            color: #fff;
+        }
+
+        .footer p {
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+      <a href="index.html" class="logo">WealthWave Realty</a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="ticker-section">
+      <div class="ticker">
+        <span>&#9733; Exclusive Properties Available Now</span>
+        <span>&#9733; Maximize Your Investment Returns</span>
+        <span>&#9733; Bespoke Real Estate Solutions</span>
+        <span>&#9733; Luxury Homes & Estates</span>
+        <span>&#9733; Connect with Our Expert Advisors</span>
+        <span>&#9733; New Listings Daily</span>
+      </div>
+    </div>
+
+    <section class="property-details-section">
+      <h2>Experion Elements</h2>
+      <p>Welcome to the future of luxury living in Noida!A landmark project developed around the concept of the five natural elements </p>
+      <div class="property-details-container">
+        <div class="property-card">
+          <img src="experion-elements-7.jpg" alt="Experion Elements">
+          <div class="property-card-content">
+            <h3>Project Details</h3>
+            <p>From the makers of Atal Setu, Ram Mandir & Statue of Unity, L&T brings a landmark luxury project to Noida.</p>
+            <h4>Homes Available</h4>
+            <ul>
+              <li><strong>3 BHK + Utility:</strong> ~2,975 sq. ft.</li>
+                <li><strong>4 BHK + Utility:</strong> ~3,530 sq. ft.</li>
+            </ul>
+
+            <h4>Pricing & Booking</h4>
+            <p>Prices start from <strong>₹5.27 Cr*</strong></p>
+            <ul>
+             <li><strong>3 BHK:</strong> ₹6.33 Cr (onwards)</li>
+                <li><strong>4 BHK:</strong> ₹7.63 Cr (onwards)</li>
+                <li><strong>Payment Plans:</strong> Flexible options like 20:20:60.</li>
+                <li><strong>RERA Approved:</strong> Possession expected by early 2029.</li>
+            </ul>
+
+            <h4>Why Choose Experion Elements?</h4>
+            <ul>
+             <li>✔ Developed by renowned architects Belt Collins & DSP Design.</li>
+                <li>✔ Ultra-premium twin towers on 4.5 acres.</li>
+                <li>✔ World-class clubhouse (~30k–50k sq. ft.), smart homes & EV parking.</li>
+                <li>✔ Amenities include a bowling alley, cineplex, and Miyawaki garden.</li>
+                <li>✔ Positioned in prime Central Noida, Sector 45.</li>
+            </ul>
+
+            <h2>🏙️ Location Benefits</h2>
+            <ul>
+                <li>✔ **Connectivity:** Near Noida-Greater Noida Expressway, DND Flyway, and multiple metro stations.</li>
+                <li>✔ **Proximity:** Close to top educational institutions, healthcare facilities, and retail hubs.</li>
+                <li>✔ **Sustainability:** GRIHA certified with eco-friendly features.</li>
+            </ul>
+            
+            <p>For complete details on the payment plan, launch offers & priority booking, Contact Us!</p>
+            <a href="tel:8770287915" class="btn-gold">Call Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="social-links">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+      <p>&copy; 2023 WealthWave Realty. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
