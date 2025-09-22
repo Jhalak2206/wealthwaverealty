@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L&T Green Reserve - WealthWave Realty</title>
+    <title>Experion Elements - Noida Sector 45</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* CSS from your index.html */
@@ -104,113 +104,48 @@
         }
 
         /* General Section Styles */
-        .section {
-            padding: 80px 5%;
-            text-align: center;
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
-        }
-
-        .section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5em;
-            color: #333;
-            margin-bottom: 40px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: #ffd700;
-            border-radius: 2px;
-        }
-
-        /* Styles for the property details section on the new page */
-        .property-details-section {
-            padding: 80px 5%;
-            text-align: center;
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
-        }
-
-        .property-details-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .property-card {
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        .container {
             max-width: 800px;
-            text-align: left;
-            overflow: hidden;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
-        .property-card img {
-            width: 100%;
-            height: auto;
-            display: block;
+        h1, h2, h3 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 20px;
         }
-
-        .property-card-content {
-            padding: 25px;
-        }
-
-        .property-card-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2em;
-            color: #333;
-            margin-top: 0;
-            line-height: 1.2;
-        }
-
-        .property-card-content ul {
+        ul {
             list-style-type: none;
             padding: 0;
         }
-
-        .property-card-content ul li {
+        li {
+            background-color: #ecf0f1;
             margin-bottom: 10px;
-            font-size: 1.1em;
-            color: #555;
-        }
-
-        .property-card-content strong {
-            color: #333;
-        }
-
-        /* Gold button styling */
-        .btn-gold {
-            display: inline-block;
-            background-color: #ffd700;
-            color: #333;
-            padding: 12px 25px;
+            padding: 15px;
             border-radius: 5px;
+            border-left: 5px solid #3498db;
+        }
+        strong {
+            color: #e74c3c;
+        }
+        .call-btn {
+            display: inline-block;
+            background-color: #2ecc71;
+            color: #fff;
+            padding: 15px 25px;
             text-decoration: none;
-            font-weight: 700;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
         }
-
-        .btn-gold:hover {
-            background-color: #e6c200;
-            transform: translateY(-2px);
+        .call-btn:hover {
+            background-color: #27ae60;
         }
-
-        /* Footer styling */
         .footer {
             background-color: #1a1a1a;
             color: #ccc;
@@ -234,6 +169,17 @@
         .footer p {
             margin-top: 20px;
         }
+        /* New image styling */
+        .property-image {
+            width: 100%; /* Makes the image responsive to the container width */
+            max-width: 800px; /* Ensures the image doesn't get too large */
+            height: auto;
+            display: block; /* Centers the image */
+            margin: 20px auto; /* Adds space above and below */
+            border-radius: 8px; /* Optional: adds rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a subtle shadow */
+        }
+
 
     </style>
 </head>
@@ -261,48 +207,55 @@
       </div>
     </div>
 
-    <section class="property-details-section">
-      <h2>L&T Green Reserve</h2>
-      <p>A landmark luxury project in Noida from the makers of iconic Indian landmarks.</p>
-      <div class="property-details-container">
-        <div class="property-card">
-          <img src="experion-elements-7.png" alt="L&T Green Reserve Towers">
-          <div class="property-card-content">
-            <h3>Project Details</h3>
-            <p>From the makers of Atal Setu, Ram Mandir & Statue of Unity, L&T brings a landmark luxury project to Noida.</p>
-            <h4>Homes Available</h4>
+  <div class="container">
+        <header>
+            <h1>🌟 Experion Elements – Noida Sector 45 🌟</h1>
+        </header>
+        
+        <img src="experion-elements-7.jpg" alt="Experion Elements apartment towers" class="property-image">
+        <section>
+            <p>Welcome to the future of luxury living in Noida! 🏗<br>
+            A landmark project developed around the concept of the five natural elements ✨</p>
+            
+            <h2>🏡 Homes Available</h2>
             <ul>
-              <li><strong>3 BHK Majesta:</strong> 2,850 sq. ft.</li>
-              <li><strong>3 BHK Millenia:</strong> 3,075 sq. ft.</li>
-              <li><strong>4 BHK Luxuria:</strong> 3,555 sq. ft.</li>
-              <li><strong>5 BHK Royale:</strong> 5,085 sq. ft.</li>
-              <li><strong>5 BHK Regalia:</strong> 5,720 sq. ft. (with Family Lounge)</li>
+                <li><strong>3 BHK + Utility:</strong> ~2,975 sq. ft.</li>
+                <li><strong>4 BHK + Utility:</strong> ~3,530 sq. ft.</li>
             </ul>
 
-            <h4>Pricing & Booking</h4>
-            <p>Prices start from <strong>₹21,716/sq. ft.</strong> (floor-based pricing).</p>
-            <p><strong>EOI (Expression of Interest):</strong></p>
+            <h2>💰 Pricing & RERA</h2>
+            <p><strong>Starting from:</strong> ₹5.27 Cr*</p>
             <ul>
-              <li>Starts: 25th Sept, 11 AM</li>
-              <li>EOI Amount: ₹10 Lakh</li>
-              <li>Allocation based on time-stamped token. Allotment begins 1st week of October.</li>
+                <li><strong>3 BHK:</strong> ₹6.33 Cr (onwards)</li>
+                <li><strong>4 BHK:</strong> ₹7.63 Cr (onwards)</li>
+                <li><strong>Payment Plans:</strong> Flexible options like 20:20:60.</li>
+                <li><strong>RERA Approved:</strong> Possession expected by early 2029.</li>
             </ul>
 
-            <h4>Why Choose L&T Green Reserve?</h4>
+            <h2>✨ Why Choose Experion Elements?</h2>
             <ul>
-              <li>Located in Noida’s premium Sector 128.</li>
-              <li>Luxury modular kitchen with hob & chimney.</li>
-              <li>Gas & heat detectors for safety.</li>
-              <li>World-class design & finishes.</li>
-              <li>Limited inventory – high demand.</li>
+                <li>✔ Developed by renowned architects Belt Collins & DSP Design.</li>
+                <li>✔ Ultra-premium twin towers on 4.5 acres.</li>
+                <li>✔ World-class clubhouse (~30k–50k sq. ft.), smart homes & EV parking.</li>
+                <li>✔ Amenities include a bowling alley, cineplex, and Miyawaki garden.</li>
+                <li>✔ Positioned in prime Central Noida, Sector 45.</li>
             </ul>
+            
+            <h2>🏙️ Location Benefits</h2>
+            <ul>
+                <li>✔ **Connectivity:** Near Noida-Greater Noida Expressway, DND Flyway, and multiple metro stations.</li>
+                <li>✔ **Proximity:** Close to top educational institutions, healthcare facilities, and retail hubs.</li>
+                <li>✔ **Sustainability:** GRIHA certified with eco-friendly features.</li>
+            </ul>
+        </section>
+       <section>
+            <p>🔥 This is a once-in-a-lifetime chance to own a home in a truly iconic, elements-inspired masterpiece.</p>
+            <p>👉 For complete details on payment plans, launch offers & priority booking:</p>
+            <a href="tel:+917053707070" class="call-btn">Call Realty Dart at 7053707070 NOW</a>
+        </section>
+    </div>
 
-            <p>For complete details on the payment plan, launch offers & priority booking, Contact Us!</p>
-            <a href="tel:8770287915" class="btn-gold">Call Now</a>
-          </div>
-        </div>
-      </div>
-    </section>
+
 
     <footer class="footer">
       <div class="social-links">
