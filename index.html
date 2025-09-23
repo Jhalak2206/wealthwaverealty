@@ -15,9 +15,8 @@
             line-height: 1.6;
             padding-top: 100px; /* Adjusted padding to accommodate fixed header AND ticker */
         }
-
-        /* --- Main Header (Logo and Navigation) --- */
-        .main-header { /* Renamed from .header */
+/* --- Main Header (Logo and Navigation) --- */
+        .main-header {
             background-color: #1a1a1a;
             color: white;
             padding: 15px 30px;
@@ -29,9 +28,9 @@
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000; /* Ensures it stays on top */
-            height: 60px; /* Explicit height for calculation */
-            box-sizing: border-box; /* Include padding in height */
+            z-index: 1000;
+            height: 60px;
+            box-sizing: border-box;
         }
 
         .main-header .logo { /* Changed from .header .logo */
@@ -43,7 +42,6 @@
             text-transform: uppercase;
             text-decoration: none;
         }
-        
 
         .nav-menu {
             list-style: none;
@@ -64,6 +62,7 @@
         .nav-menu a:hover {
             color: #ffd700;
         }
+
         /* --- Separate Scrolling Ticker Section --- */
         .ticker-section { /* New section for the ticker */
             position: fixed;
