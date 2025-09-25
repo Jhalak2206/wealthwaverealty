@@ -13,10 +13,10 @@
             color: #333;
             overflow-x: hidden;
             line-height: 1.6;
-            padding-top: 100px; /* Adjusted padding to accommodate fixed header AND ticker */
+            padding-top: 100px;
         }
-/* --- Main Header (Logo and Navigation) --- */
-         .main-header {
+
+        .main-header {
             background-color: #1a1a1a;
             color: white;
             padding: 15px 30px;
@@ -40,59 +40,59 @@
             color: #ffd700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            text-decoration: none;
+            text-decoration: none !important; /* Specificity Fix */
         }
 
-        .nav-menu {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 30px;
+        .main-header .nav-menu { /* Specificity Fix */
+            list-style: none !important; /* Specificity Fix */
+            margin: 0 !important; /* Specificity Fix */
+            padding: 0 !important; /* Specificity Fix */
+            display: flex !important; /* Specificity Fix */
+            gap: 30px !important; /* Specificity Fix */
         }
 
-        .nav-menu a {
-            color: #fff;
-            text-decoration: none;
+        .main-header .nav-menu a { /* Specificity Fix */
+            color: #fff !important; /* Specificity Fix */
+            text-decoration: none !important; /* Specificity Fix */
             font-weight: 500;
             font-size: 1em;
             transition: color 0.3s ease;
         }
 
-        .nav-menu a:hover {
+        .main-header .nav-menu a:hover { /* Specificity Fix */
             color: #ffd700;
         }
-        /* --- Separate Scrolling Ticker Section --- */
-        .ticker-section { /* New section for the ticker */
+        
+        .ticker-section {
             position: fixed;
-            top: 60px; /* Position right below the main-header (assuming main-header height is 60px) */
+            top: 60px;
             left: 0;
             width: 100%;
-            background-color: #ffd700; /* Gold background for the ticker */
-            color: #1a1a1a; /* Dark text on gold */
-            padding: 8px 0; /* Slightly reduced padding for a slimmer bar */
+            background-color: #ffd700;
+            color: #1a1a1a;
+            padding: 8px 0;
             overflow: hidden;
-            z-index: 999; /* Below the main-header but above other content */
+            z-index: 999;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             white-space: nowrap;
-            height: 40px; /* Explicit height for calculation */
-            box-sizing: border-box; /* Include padding in height */
+            height: 40px;
+            box-sizing: border-box;
         }
 
-        .ticker { /* Renamed from .header-ticker */
+        .ticker {
             display: inline-block;
             animation: scroll-left 25s linear infinite;
-            padding-right: 100%; /* Ensures continuous scrolling effect */
+            padding-right: 100%;
             font-weight: 500;
-            line-height: 1; /* Adjust line-height to vertically center text */
+            line-height: 1;
         }
 
-        .ticker span { /* Renamed from .header-ticker span */
+        .ticker span {
             margin-right: 40px;
-            font-size: 1em; /* Slightly larger for better readability on gold */
+            font-size: 1em;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: #1a1a1a; /* Ensure text color is dark for contrast */
+            color: #1a1a1a;
         }
 
         @keyframes scroll-left {
@@ -100,12 +100,11 @@
             100% { transform: translateX(-100%); }
         }
 
-        /* --- Hero Section and other content styles remain largely the same --- */
         .hero-section {
             position: relative;
             width: 100%;
             height: 80vh;
-            background: url('Gemini_Generated_Image_8dxyq58dxyq58dxy (1).png') no-repeat center center/cover; /* REPLACE with your image URL */
+            background: url('Gemini_Generated_Image_8dxyq58dxyq58dxy (1).png') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -136,7 +135,6 @@
             font-weight: 400;
         }
 
-        /* General Section Styles */
         .section {
             padding: 80px 5%;
             text-align: center;
@@ -167,7 +165,6 @@
             border-radius: 2px;
         }
 
-        /* CEO section styles */
         .ceo-section {
             padding: 80px 5%;
             text-align: center;
@@ -235,7 +232,6 @@
             display: table;
         }
 
-        /* Grid container for values and listings */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -252,16 +248,16 @@
             text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             .card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
+                text-decoration: none;
+                color: inherit;
+                display: block;
+            }
 
-.card-link:hover .grid-item {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
-}
+            .card-link:hover .grid-item {
+                transform: translateY(-8px);
+                box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+                transition: all 0.3s ease;
+            }
 
         }
 
@@ -297,7 +293,6 @@
             line-height: 1.6;
         }
 
-        /* Gold button styling */
         .btn-gold {
             display: inline-block;
             background-color: #ffd700;
@@ -315,7 +310,6 @@
             transform: translateY(-2px);
         }
 
-        /* Footer styling */
         .footer {
             background-color: #1a1a1a;
             color: #ccc;
@@ -340,23 +334,22 @@
             margin-top: 20px;
         }
 
-        /* POP-UP MODAL STYLES */
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1001; /* Sit on top of everything else */
+            display: none;
+            position: fixed;
+            z-index: 1001;
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0, 0, 0, 0.6); /* Black background with opacity */
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
             padding-top: 60px;
         }
 
         .modal-content {
             background-color: #fefefe;
-            margin: 5% auto; /* 5% from the top and centered */
+            margin: 5% auto;
             padding: 20px;
             border: 1px solid #888;
             width: 90%;
@@ -387,16 +380,19 @@
 </head>
 <body>
 
-    <header class="main-header"> <a href="index.html" class="logo">WealthWave Realty</a>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="ticker-section"> <div class="ticker"> <span>&#9733; Exclusive Properties Available Now</span>
+    <header class="main-header"> 
+        <a href="index.html" class="logo">WealthWave Realty</a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="ticker-section"> 
+        <div class="ticker"> 
+            <span>&#9733; Exclusive Properties Available Now</span>
             <span>&#9733; Maximize Your Investment Returns</span>
             <span>&#9733; Bespoke Real Estate Solutions</span>
             <span>&#9733; Luxury Homes & Estates</span>
@@ -413,56 +409,53 @@
     </div>
 
     <section class="ceo-section">
-    <h2>From Our Leadership</h2>
-    <div class="ceo-container">
-        <div class="ceo-card clearfix">
-            <img src="DSC01086.JPG" alt="Anshul Patel - Co-Founder & CEO">
-            <h3>Anshul Patel</h3>
-            <span class="title">Co-Founder & CEO</span>
-            <p>"We founded WealthWave Realty on a simple principle: to redefine luxury real estate by merging timeless elegance with data-driven investment strategy. We don't just sell homes; we build legacies."</p>
+        <h2>From Our Leadership</h2>
+        <div class="ceo-container">
+            <div class="ceo-card clearfix">
+                <img src="DSC01086.JPG" alt="Anshul Patel - Co-Founder & CEO">
+                <h3>Anshul Patel</h3>
+                <span class="title">Co-Founder & CEO</span>
+                <p>"We founded WealthWave Realty on a simple principle: to redefine luxury real estate by merging timeless elegance with data-driven investment strategy. We don't just sell homes; we build legacies."</p>
+            </div>
+            <div class="ceo-card clearfix">
+                <img src="WhatsApp Image 2025-09-20 at 14.54.32.jpeg" alt="Kritik Singh - Co-Founder & CEO">
+                <h3>Kritik Singh</h3>
+                <span class="title">Co-Founder & CEO</span>
+                <p>"Our vision is to provide a seamless, transparent experience for our clients. Every transaction is a partnership, and our commitment is to your prosperity, ensuring every move you make is a strategic one."</p>
+            </div>
         </div>
-        <div class="ceo-card clearfix">
-            <img src="WhatsApp Image 2025-09-20 at 14.54.32.jpeg" alt="Kritik Singh - Co-Founder & CEO">
-            <h3>Kritik Singh</h3>
-            <span class="title">Co-Founder & CEO</span>
-            <p>"Our vision is to provide a seamless, transparent experience for our clients. Every transaction is a partnership, and our commitment is to your prosperity, ensuring every move you make is a strategic one."</p>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section class="section">
         <h2>Our Core Values</h2>
         <p>At WealthWave Realty, we are committed to integrity, excellence, and delivering superior results...</p>
         <div class="grid-container">
 
-    <!-- Exclusivity -->
-    <div class="grid-item">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Luxury Interior">
-        <div class="grid-item-content">
-            <h3>Exclusivity</h3>
-            <p>Gain access to a curated portfolio of luxury properties that you won’t find elsewhere — delivering rare opportunities and a privileged experience.</p>
-        </div>
-    </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Luxury Interior">
+                <div class="grid-item-content">
+                    <h3>Exclusivity</h3>
+                    <p>Gain access to a curated portfolio of luxury properties that you won’t find elsewhere — delivering rare opportunities and a privileged experience.</p>
+                </div>
+            </div>
 
-    <!-- Expertise -->
-    <div class="grid-item">
-        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Modern Architecture">
-        <div class="grid-item-content">
-            <h3>Expertise</h3>
-            <p>Leverage our market intelligence and the expertise of seasoned professionals, ensuring that every decision is strategic and rewarding.</p>
-        </div>
-    </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Modern Architecture">
+                <div class="grid-item-content">
+                    <h3>Expertise</h3>
+                    <p>Leverage our market intelligence and the expertise of seasoned professionals, ensuring that every decision is strategic and rewarding.</p>
+                </div>
+            </div>
 
-    <!-- Results-Driven -->
-    <div class="grid-item">
-        <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Luxury Pool">
-        <div class="grid-item-content">
-            <h3>Results-Driven</h3>
-            <p>We focus on delivering measurable value and maximizing returns on every transaction, turning your real estate goals into lasting achievements.</p>
-        </div>
-    </div>
+            <div class="grid-item">
+                <img src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?ixlib=rb-4.0.3&auto=format&fit=crop&w=1770&q=80" alt="Luxury Pool">
+                <div class="grid-item-content">
+                    <h3>Results-Driven</h3>
+                    <p>We focus on delivering measurable value and maximizing returns on every transaction, turning your real estate goals into lasting achievements.</p>
+                </div>
+            </div>
 
-</div>
+        </div>
 
     </section>
 
@@ -479,7 +472,7 @@
                 </div>
             </div>
             <div class="grid-item">
-               <img src="experion-elements-7.jpg" alt="Modern Villa">
+                <img src="experion-elements-7.jpg" alt="Modern Villa">
                 <div class="grid-item-content">
                     <h3>Experion Elements</h3>
                     <p>Experion Elements Noida is a new ultra-luxury residential project in Sector 45, offering meticulously designed 3 and 4 BHK apartments with amenities inspired by the five elements of nature.</p>
@@ -504,15 +497,15 @@
     </section>
 
     <footer class="footer">
-    <div class="social-links">
-        <a href="https://www.youtube.com/@wealthwaverealty">Youtube</a>
-        <a href="https://www.instagram.com/wealthwaverealty/">Instagram</a>
-        <a href="https://www.linkedin.com/company/wealthwave-realty-solutions/">LinkedIn</a>
-        <a href="https://www.facebook.com/people/Wealthwave-Realty/61575852136729/#">Facebook</a>
-    </div>
-    <p>Plot No. 21 & 21A, Sector 142, Noida, Uttar Pradesh 201304</p>
-    <p>&copy; 2024 WealthWave Realty. All rights reserved.</p>
-</footer>
+        <div class="social-links">
+            <a href="https://www.youtube.com/@wealthwaverealty">Youtube</a>
+            <a href="https://www.instagram.com/wealthwaverealty/">Instagram</a>
+            <a href="https://www.linkedin.com/company/wealthwave-realty-solutions/">LinkedIn</a>
+            <a href="https://www.facebook.com/people/Wealthwave-Realty/61575852136729/#">Facebook</a>
+        </div>
+        <p>Plot No. 21 & 21A, Sector 142, Noida, Uttar Pradesh 201304</p>
+        <p>&copy; 2024 WealthWave Realty. All rights reserved.</p>
+    </footer>
 
     <div id="consultation-modal" class="modal">
         <div class="modal-content">
@@ -520,27 +513,23 @@
             <h2>Schedule a Consultation</h2>
             <p>Please provide your details below, and we will contact you shortly.</p>
             
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdS1su81dGWyjD3CQT7Sl3S-toJtEQV7KB79WU7g8N5hx2QaA/viewform?embedded=true" width="640" height="756" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdS1su81dGWyjD3CQT7Sl3S-toJtEQV7KB79WU7g8N5hx2QaA/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
         </div>
     </div>
 
     <script>
-        // Get the modal, the button that opens it, and the close button
         var modal = document.getElementById("consultation-modal");
         var btn = document.getElementById("consultation-btn");
         var span = document.getElementsByClassName("close-btn")[0];
 
-        // When the user clicks the button, open the modal
         btn.onclick = function() {
             modal.style.display = "block";
         }
 
-        // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
             modal.style.display = "none";
         }
 
-        // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
             if (event.target == modal) {
                 modal.style.display = "none";
