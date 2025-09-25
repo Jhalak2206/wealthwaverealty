@@ -16,7 +16,7 @@
             padding-top: 100px; /* Adjusted padding to accommodate fixed header AND ticker */
         }
 /* --- Main Header (Logo and Navigation) --- */
-        .main-header {
+         .main-header {
             background-color: #1a1a1a;
             color: white;
             padding: 15px 30px;
@@ -33,7 +33,7 @@
             box-sizing: border-box;
         }
 
-        .main-header .logo { /* Changed from .header .logo */
+        .main-header .logo {
             font-family: 'Playfair Display', serif;
             font-size: 2.5em;
             font-weight: 700;
@@ -44,11 +44,12 @@
         }
 
         .nav-menu {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin-left: auto; /* 🔑 pushes nav items to the right */
-}
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
 
         .nav-menu a {
             color: #fff;
@@ -61,7 +62,6 @@
         .nav-menu a:hover {
             color: #ffd700;
         }
-
         /* --- Separate Scrolling Ticker Section --- */
         .ticker-section { /* New section for the ticker */
             position: fixed;
