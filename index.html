@@ -392,18 +392,26 @@
         display: block;
     }
     .nav-menu {
-        display: none !important;
-        flex-direction: column;
-        gap: 15px;
-        background-color: #1a1a1a;
-        width: 100%;
-        padding: 15px;
-        margin-top: 10px;
-        border-radius: 5px;
-    }
-    .nav-menu.active {
-        display: flex !important;
-    }
+    max-height: 0;              /* Start hidden */
+    overflow: hidden;
+    flex-direction: column;
+    gap: 15px;
+    background-color: #1a1a1a;
+    width: 100%;
+    padding: 0 15px;            /* Start collapsed */
+    margin-top: 10px;
+    border-radius: 5px;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    z-index: 1001;
+    transition: max-height 0.4s ease-in-out, padding 0.3s ease-in-out;
+}
+
+.nav-menu.active {
+    max-height: 400px;          /* Enough space for all links */
+    padding: 15px;              /* Add padding back */
+}
 }
 
     </style>
@@ -566,12 +574,29 @@
             modal.style.display = "none";
         }
     }
-      var menuToggle = document.querySelector(".menu-toggle");
-    var navMenu = document.querySelector(".nav-menu");
+     var menuToggle = document.querySelector(".menu-toggle");
+var navMenu = document.querySelector(".nav-menu");
 
-    menuToggle.addEventListener("click", function() {
-        navMenu.classList.toggle("active");
+menuToggle.addEventListener("click", function() {
+    navMenu.classList.toggle("active");
+    menuToggle.classList.toggle("active");
+
+    // Toggle icon ☰ ↔ ❌
+    if (menuToggle.classList.contains("active")) {
+        menuToggle.innerHTML = "&times;"; // ❌
+    } else {
+        menuToggle.innerHTML = "&#9776;"; // ☰
+    }
+});
+
+// Close menu when a link is clicked
+document.querySelectorAll(".nav-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("active");
+        menuToggle.classList.remove("active");
+        menuToggle.innerHTML = "&#9776;"; // back to ☰
     });
+});
 </script>
 
 </body>
