@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>WealthWave Realty - About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* 1. BODY - SAFE AREA ADJUSTMENT */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+            /* 🛠️ NEW: Calculates padding based on (60px header + 40px ticker) + 35px minimum clearance (for Android/iPhone) */
+            padding-top: calc(100px + max(35px, env(safe-area-inset-top)));
+        }
+
+        /* 2. MAIN HEADER - SAFE AREA ADJUSTMENT */
+        .main-header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 0 30px; 
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            height: auto; /* Allows dynamic height calculation */
+            box-sizing: border-box;
+
+            /* 🛠️ NEW PADDING TOP: Original 15px top padding + (minimum 35px or iOS safe area) */
+            padding-top: calc(15px + max(35px, env(safe-area-inset-top))); 
+            padding-bottom: 15px; 
+        }
+
+        .main-header .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #ffd700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        /* 3. TICKER - SAFE AREA ADJUSTMENT */
+        .ticker-section {
+            position: fixed;
+            /* 🛠️ NEW TOP: Starts after the original 60px header height + the required clearance (35px min) */
+            top: calc(60px + max(35px, env(safe-area-inset-top)));
+            left: 0;
+            width: 100%;
+            background-color: #ffd700;
+            color: #1a1a1a;
+            padding: 8px 0;
+            overflow: hidden;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            height: 40px;
+            box-sizing: border-box;
+        }
+
+        .ticker {
+            display: inline-block;
+            animation: scroll-left 25s linear infinite;
+            padding-right: 100%;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .ticker span {
+            margin-right: 40px;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* General Section Styles */
+        .section {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: #333;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #ffd700;
+            border-radius: 2px;
+        }
+
+        /* CEO section styles */
+        .ceo-section {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+
+        .ceo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .ceo-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            max-width: 500px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ceo-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .ceo-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            float: left;
+            margin-right: 25px;
+            border: 4px solid #ffd700;
+        }
+
+        .ceo-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: #333;
+            margin-top: 0;
+            line-height: 1.2;
+        }
+
+        .ceo-card .title {
+            font-size: 1em;
+            color: #666;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .ceo-card p {
+            font-size: 1.1em;
+            color: #555;
+            margin-top: 0;
+        }
+
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Grid container for values and listings */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .grid-item {
+            background-color: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .grid-item-content {
+            padding: 25px;
+        }
+
+        .grid-item-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8em;
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .grid-item-content p {
+            font-size: 1em;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        /* Gold button styling */
+        .btn-gold {
+            display: inline-block;
+            background-color: #ffd700;
+            color: #333;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-gold:hover {
+            background-color: #e6c200;
+            transform: translateY(-2px);
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 50px 30px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .footer .social-links a {
+            color: #ffd700;
+            margin: 0 15px;
+            font-size: 1.5em;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer .social-links a:hover {
+            color: #fff;
+        }
+
+        .footer p {
+            margin-top: 20px;
+        }
+
+        /* 4. MOBILE MENU STYLES (Hamburger Icon) */
+        .menu-toggle {
+            display: none;
+            font-size: 2em;
+            color: #ffd700;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            .nav-menu {
+                max-height: 0;          
+                overflow: hidden;
+                flex-direction: column;
+                gap: 15px;
+                background-color: #1a1a1a;
+                width: 100%;
+                padding: 0 15px;          
+                margin-top: 10px;
+                border-radius: 5px;
+                position: absolute;
+                /* 🛠️ NEW TOP: Menu starts after the dynamically sized header */
+                top: calc(60px + max(35px, env(safe-area-inset-top)));
+                left: 0;
+                z-index: 1001;
+                transition: max-height 0.4s ease-in-out, padding 0.3s ease-in-out;
+            }
+
+            .nav-menu.active {
+                max-height: 400px; 
+                padding: 15px; 
+            }
+            header nav {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <a href="index.html" class="logo">WealthWave Realty</a>
+        <button class="menu-toggle">&#9776;</button> 
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="ticker-section">
+        <div class="ticker">
+            <span>&#9733; Exclusive Properties Available Now</span>
+            <span>&#9733; Maximize Your Investment Returns</span>
+            <span>&#9733; Bespoke Real Estate Solutions</span>
+            <span>&#9733; Luxury Homes & Estates</span>
+            <span>&#9733; Connect with Our Expert Advisors</span>
+            <span>&#9733; New Listings Daily</span>
+        </div>
+    </div>
+
+    <section class="section" id="about-us">
+        <h2>Welcome to WealthWave Realty</h2>
+        <p>Welcome! We are WealthWave Realty, and we believe that finding your dream property should be an exciting journey, not a stressful process. We founded our company on a simple idea: to make luxury real estate feel personal, accessible, and truly rewarding.</p>
+        <p>Our team is a unique blend of seasoned professionals and fresh, innovative thinkers. We combine years of experience with smart market insights to help you make confident decisions, whether you're looking for your perfect home or a powerful investment.</p>
+        <p>This isn't just about properties; it’s about people. We're here to be your trusted partners every step of the way, providing transparent and honest advice. Our passion is helping you turn your property dreams into a reality and building a legacy you'll be proud of.</p>
+    </section>
+
+    <section class="ceo-section">
+        <h2>From Our Leadership</h2>
+        <div class="ceo-container">
+            <div class="ceo-card clearfix">
+                <img src="DSC01086.JPG" alt="Anshul Patel - Co-Founder & CEO">
+                <h3>Anshul Patel</h3>
+                <span class="title">Co-Founder & CEO</span>
+                <p>"We founded WealthWave Realty on a simple principle: to redefine luxury real estate by merging timeless elegance with data-driven investment strategy. We don't just sell homes; we build legacies."</p>
+            </div>
+            <div class="ceo-card clearfix">
+                <img src="WhatsApp Image 2025-09-20 at 14.54.32.jpeg" alt="Kritik Singh - Co-Founder & CEO">
+                <h3>Kritik Singh</h3>
+                <span class="title">Co-Founder & CEO</span>
+                <p>"Our vision is to provide a seamless, transparent experience for our clients. Every transaction is a partnership, and our commitment is to your prosperity, ensuring every move you make is a strategic one."</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.youtube.com/@wealthwaverealty">Youtube</a>
+            <a href="https://www.instagram.com/wealthwaverealty?igsh=YTVudmw5eW15bnV2">Instagram</a>
+            <a href="https://www.linkedin.com/company/wealthwave-realty-solutions/">LinkedIn</a>
+            <a href="https://www.facebook.com/profile.php?id=61575852136729">Facebook</a>
+        </div>
+        <p>&copy; 2024 WealthWave Realty. All rights reserved.</p>
+    </footer>
+
+    <script>
+        var menuToggle = document.querySelector(".menu-toggle");
+        var navMenu = document.querySelector(".nav-menu");
+
+        menuToggle.addEventListener("click", function() {
+            navMenu.classList.toggle("active");
+            menuToggle.classList.toggle("active");
+
+            // Toggle icon ☰ ↔ ❌
+            if (menuToggle.classList.contains("active")) {
+                menuToggle.innerHTML = "&times;"; // ❌
+            } else {
+                menuToggle.innerHTML = "&#9776;"; // ☰
+            }
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-menu a").forEach(link => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+                menuToggle.classList.remove("active");
+                menuToggle.innerHTML = "&#9776;"; // back to ☰
+            });
+        });
+    </script>
+
+</body>
+</html>
