@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>WealthWave Realty - About Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables for simplified control */
+        :root {
+            --header-vertical-padding: 15px;
+            --logo-content-height: 30px;
+            --header-height-desktop: calc(var(--logo-content-height) + 2 * var(--header-vertical-padding)); /* 60px */
+            --ticker-height: 40px;
+            --status-bar-clearance: 0px; 
+            /* Total fixed height for desktop content (60px + 40px) */
+            --total-fixed-height: calc(var(--header-height-desktop) + var(--ticker-height));
+        }
+
+        /* 1. BODY - Desktop Default */
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding-top: var(--total-fixed-height); 
+        }
+
+        /* 2. MAIN HEADER (FIXED at top) - Desktop Default */
+        .main-header {
+            background-color: #1a1a1a;
+            color: white;
+            padding: var(--header-vertical-padding) 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-sizing: border-box;
+            height: var(--header-height-desktop);
+        }
+
+        .main-header .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #ffd700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            flex-shrink: 0; 
+            line-height: 1;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #ffd700;
+        }
+
+        /* 3. TICKER SECTION (FIXED below header) - Desktop Default */
+        .ticker-section {
+            position: fixed;
+            top: var(--header-height-desktop);
+            left: 0;
+            width: 100%;
+            background-color: #ffd700;
+            color: #1a1a1a;
+            padding: 8px 0;
+            overflow: hidden;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            white-space: nowrap;
+            height: var(--ticker-height);
+            box-sizing: border-box;
+        }
+        
+        .ticker {
+            display: inline-block;
+            animation: scroll-left 25s linear infinite;
+            padding-right: 100%;
+            font-weight: 500;
+            line-height: 1;
+            margin: 0;
+        }
+
+        .ticker span {
+            margin-right: 40px;
+            font-size: 1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* General Content Styles */
+        .section {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: #333;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        /* CEO Section Styles */
+        .ceo-section {
+            padding: 80px 5%;
+            text-align: center;
+            background-color: #f5f5f5;
+        }
+
+        .ceo-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .ceo-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            max-width: 500px;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ceo-card img {
+            /* Desktop/Default Image Size */
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            float: left;
+            margin-right: 25px;
+            border: 4px solid #ffd700;
+        }
+        
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 50px 30px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        /* 4. MOBILE RESPONSIVENESS (Max 768px) */
+        .menu-toggle {
+            display: none;
+            font-size: 2em;
+            color: #ffd700;
+            background: none;
+            border: none;
+            cursor: pointer;
+            line-height: 1; 
+        }
+
+        @media (max-width: 768px) {
+            
+            /* 🛠️ FIX 1: MOBILE HEADER & SAFE AREA LOGIC */
+            :root {
+                --status-bar-clearance: max(20px, env(safe-area-inset-top)); 
+            }
+            
+            body {
+                /* CORRECT CONTENT PADDING: (Header Base Height + Clearance) + Ticker Height */
+                padding-top: calc(var(--header-height-desktop) + var(--status-bar-clearance) + var(--ticker-height));
+            }
+
+            .main-header {
+                height: auto; 
+                padding-top: calc(var(--header-vertical-padding) + var(--status-bar-clearance)); 
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .main-header .logo {
+                /* 🛠️ FIX 2: Aggressive logo font reduction to prevent wrapping/congestion */
+                font-size: 1.4em; 
+                letter-spacing: 0.5px;
+            }
+            
+            .ticker-section {
+                top: calc(var(--header-height-desktop) + var(--status-bar-clearance));
+            }
+
+            /* Enable Mobile Menu Toggle */
+            .menu-toggle {
+                display: block;
+            }
+            
+            /* Hide the desktop nav by default */
+            .nav-container nav {
+                display: none; 
+            }
+            
+            /* Mobile Menu Styling (FIXED POSITIONING) */
+            .nav-menu {
+                display: block;
+                max-height: 0; 
+                overflow: hidden;
+                width: 100vw; 
+                padding: 0;
+                margin: 0;
+                position: fixed; 
+                
+                /* 🛠️ FIX 3 (Stability): Menu starts EXACTLY after the Ticker */
+                top: calc(var(--header-height-desktop) + var(--status-bar-clearance) + var(--ticker-height));
+                left: 0;
+                z-index: 9999;
+                transition: max-height 0.4s ease-in-out;
+            }
+
+            .nav-menu.active {
+                max-height: 400px; 
+                padding: 15px 30px; 
+            }
+            
+            /* 🛠️ FIX 4 (Image Size): Force smaller CEO images on mobile */
+            .ceo-card img {
+                width: 80px;
+                height: 80px;
+                max-width: 80px; /* Explicit max-width for safety */
+                max-height: 80px; /* Explicit max-height for safety */
+                margin-right: 15px;
+            }
+
+            /* Mobile Spacing Adjustments */
+            .section {
+                padding: 50px 5%; 
+            }
+            
+            .section h2 {
+                font-size: 2.5em;
+                margin-bottom: 25px; 
+            }
+            
+            .ceo-section {
+                padding: 50px 5%; 
+            }
+        }
+        
+        /* Desktop: Ensure nav is always visible when not mobile */
+        @media (min-width: 769px) {
+            .nav-container nav {
+                display: block; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <a href="index.html" class="logo">WealthWave Realty</a>
+        <div class="nav-container">
+            <button class="menu-toggle">&#9776;</button> 
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="ticker-section">
+        <div class="ticker">
+            <span>&#9733; Exclusive Properties Available Now</span>
+            <span>&#9733; Maximize Your Investment Returns</span>
+            <span>&#9733; Bespoke Real Estate Solutions</span>
+            <span>&#9733; Luxury Homes & Estates</span>
+            <span>&#9733; Connect with Our Expert Advisors</span>
+            <span>&#9733; New Listings Daily</span>
+        </div>
+    </div>
+
+    <section class="section" id="about-us">
+        <h2>Welcome to WealthWave Realty</h2>
+        <p>Welcome! We are WealthWave Realty, and we believe that finding your dream property should be an exciting journey, not a stressful process. We founded our company on a simple idea: to make luxury real estate feel personal, accessible, and truly rewarding.</p>
+        <p>Our team is a unique blend of seasoned professionals and fresh, innovative thinkers. We combine years of experience with smart market insights to help you make confident decisions, whether you're looking for your perfect home or a powerful investment.</p>
+        <p>This isn't just about properties; it’s about people. We're here to be your trusted partners every step of the way, providing transparent and honest advice. Our passion is helping you turn your property dreams into a reality and building a legacy you'll be proud of.</p>
+    </section>
+
+    <section class="ceo-section">
+        <h2>From Our Leadership</h2>
+        <div class="ceo-container">
+            <div class="ceo-card clearfix">
+                <img src="DSC01086.JPG" alt="Anshul Patel - Co-Founder & CEO">
+                <h3>Anshul Patel</h3>
+                <span class="title">Co-Founder & CEO</span>
+                <p>"We founded WealthWave Realty on a simple principle: to redefine luxury real estate by merging timeless elegance with data-driven investment strategy. We don't just sell homes; we build legacies."</p>
+            </div>
+            <div class="ceo-card clearfix">
+                <img src="WhatsApp Image 2025-09-20 at 14.54.32.jpeg" alt="Kritik Singh - Co-Founder & CEO">
+                <h3>Kritik Singh</h3>
+                <span class="title">Co-Founder & CEO</span>
+                <p>"Our vision is to provide a seamless, transparent experience for our clients. Every transaction is a partnership, and our commitment is to your prosperity, ensuring every move you make is a strategic one."</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://www.youtube.com/@wealthwaverealty">Youtube</a>
+            <a href="https://www.instagram.com/wealthwaverealty?igsh=YTVudmw5eW15bnV2">Instagram</a>
+            <a href="https://www.linkedin.com/company/wealthwave-realty-solutions/">LinkedIn</a>
+            <a href="https://www.facebook.com/profile.php?id=61575852136729">Facebook</a>
+        </div>
+        <p>&copy; 2024 WealthWave Realty. All rights reserved.</p>
+    </footer>
+
+    <script>
+        var menuToggle = document.querySelector(".menu-toggle");
+        var navMenu = document.querySelector(".nav-menu");
+
+        menuToggle.addEventListener("click", function() {
+            navMenu.classList.toggle("active");
+            menuToggle.classList.toggle("active");
+
+            // Toggle icon ☰ ↔ ❌
+            if (menuToggle.classList.contains("active")) {
+                menuToggle.innerHTML = "&times;"; // ❌
+            } else {
+                menuToggle.innerHTML = "&#9776;"; // ☰
+            }
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-menu a").forEach(link => {
+            link.addEventListener("click", () => {
+                navMenu.classList.remove("active");
+                menuToggle.classList.remove("active");
+                menuToggle.innerHTML = "&#9776;"; // back to ☰
+            });
+        });
+    </script>
+
+</body>
+</html>
