@@ -290,7 +290,231 @@
         letter-spacing: 0.5px;
     }
 
-    .grid-item-content
+    .grid-item-content p {
+        font-size: 1em;
+        color: #666;
+        margin-bottom: 20px;
+        line-height: 1.6;
+    }
+
+    /* BUTTONS AND FOOTER (Kept as is) */
+    .btn-gold {
+        display: inline-block;
+        background-color: #ffd700;
+        color: #333;
+        padding: 12px 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-gold:hover {
+        background-color: #e6c200;
+        transform: translateY(-2px);
+    }
+
+    .footer {
+        background-color: #1a1a1a;
+        color: #ccc;
+        padding: 50px 30px;
+        text-align: center;
+        font-size: 0.9em;
+    }
+
+    .footer .social-links a {
+        color: #ffd700;
+        margin: 0 15px;
+        font-size: 1.5em;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .footer .social-links a:hover {
+        color: #fff;
+    }
+
+    .footer p {
+        margin-top: 20px;
+    }
+
+    /* MODAL STYLES */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1001;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        /* Center the modal content */
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+    }
+    
+    .modal-content {
+        background-color: #fefefe;
+        margin: 0 auto; 
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 700px;
+        max-height: 90vh; 
+        overflow-y: auto; 
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        position: relative;
+    }
+
+    .close-btn {
+        color: #aaa;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+    }
+
+    .close-btn:hover,
+    .close-btn:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* ---------------------------------------------------- */
+    /* RESPONSIVENESS (MEDIA QUERIES)             */
+    /* ---------------------------------------------------- */
+    
+    /* Hamburger button visible only on small screens */
+    .menu-toggle {
+        display: none;
+        font-size: 2em;
+        color: #ffd700;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 1002; 
+    }
+    
+    /* Tablet & Mobile Layout: Max-width 1024px */
+    @media (max-width: 1024px) {
+        .hero-content h1 {
+            font-size: 3.5em; 
+        }
+        .hero-content p {
+            font-size: 1.5em;
+        }
+        .section h2, .ceo-section h2 {
+            font-size: 3em; 
+        }
+    }
+
+    /* Mobile Layout: Max-width 768px (Phones) */
+    @media (max-width: 768px) {
+        /* HEADER & NAVIGATION */
+        .menu-toggle {
+            display: block; /* Show hamburger */
+        }
+        .main-header {
+            padding: 10px 15px; 
+        }
+        
+        /* Ensure the main nav menu element is not displayed by default */
+        .main-header nav {
+             display: flex;
+             justify-content: flex-end; /* Keep the nav wrapper in place */
+        }
+
+        .main-header .nav-menu {
+            display: none !important; /* Hide menu by default on small screen */
+            flex-direction: column;
+            gap: 0; /* Tighten up the gap */
+            background-color: #1a1a1a;
+            width: 100%;
+            padding: 0;
+            position: absolute;
+            top: calc(60px + env(safe-area-inset-top));
+            left: 0;
+            z-index: 998; 
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            border-top: 1px solid #333;
+            text-align: left;
+        }
+        .nav-menu.active {
+            display: flex !important; /* Show menu when active */
+            padding: 10px 15px;
+        }
+        .main-header .nav-menu li {
+            padding: 12px 0; /* More padding for easier touch */
+            border-bottom: 1px solid #2a2a2a;
+            display: block; /* Ensure list items take full width */
+            width: 100%;
+        }
+        .main-header .nav-menu li:last-child {
+            border-bottom: none;
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            height: 60vh; 
+        }
+        .hero-content h1 {
+            font-size: 2.2em; /* Adjusted slightly smaller for very small phones */
+            margin-bottom: 15px;
+        }
+        .hero-content p {
+            font-size: 1em; 
+        }
+        
+        /* GENERAL SECTIONS */
+        .section, .ceo-section {
+            padding: 40px 5%; /* Reduced padding */
+        }
+        .section h2, .ceo-section h2 {
+            font-size: 2em; 
+            margin-bottom: 25px;
+        }
+        
+        /* *** CEO CARDS - DEFINITIVE FIX *** */
+        .ceo-container {
+            gap: 20px;
+        }
+        .ceo-card {
+            max-width: 100%; 
+            padding: 20px;
+        }
+        .ceo-card img {
+            float: none; /* Crucial: Remove float for mobile stacking */
+            margin: 0 auto 15px auto; 
+            display: block;
+        }
+        .ceo-card h3, 
+        .ceo-card .title,
+        .ceo-card p {
+            text-align: center; /* Center all text */
+            clear: both; /* Ensures text flows below the image */
+        }
+        /* Ensure paragraphs look decent when centered */
+        .ceo-card p {
+             font-size: 1em;
+             margin-top: 10px;
+        }
+
+
+        /* GRID SECTION */
+        .grid-container {
+            gap: 20px;
+        }
+        .grid-item {
+             min-width: 100%; /* Force stacking even on wider phones */
+        }
+    }
+</style>
 </head>
 <body>
 
@@ -325,20 +549,23 @@
     </div>
 
     <section class="ceo-section">
-        <h2>From Our Leadership</h2>
-        <div class="ceo-container">
-            <div class="ceo-card"> <img src="DSC01086.JPG" alt="Anshul Patel - Co-Founder & CEO">
-                <h3>Anshul Patel</h3>
-                <span class="title">Co-Founder</span>
-                <p>"We founded WealthWave Realty on a simple principle: to redefine luxury real estate by merging timeless elegance with data-driven investment strategy. We don't just sell homes; we build legacies."</p>
-            </div>
-            <div class="ceo-card"> <img src="WhatsApp Image 2025-09-20 at 14.54.32.jpeg" alt="Kritik Singh - Co-Founder & CEO">
-                <h3>Kritik Singh</h3>
-                <span class="title">Co-Founder</span>
-                <p>"Our vision is to provide a seamless, transparent experience for our clients. Every transaction is a partnership, and our commitment is to your prosperity, ensuring every move you make is a strategic one."</p>
-            </div>
+    <h2>From Our Leadership</h2>
+    <div class="ceo-container">
+        <div class="ceo-card clearfix"> 
+            <img src="DSC01086.JPG" alt="Anshul Patel - Co-Founder & CEO">
+            <h3>Anshul Patel</h3>
+            <span class="title">Co-Founder</span>
+            <p>"We founded WealthWave Realty on a simple principle: to redefine luxury real estate by merging timeless elegance with data-driven investment strategy. We don't just sell homes; we build legacies."</p>
         </div>
-    </section>
+
+        <div class="ceo-card clearfix"> 
+            <img src="WhatsApp Image 2025-09-20 at 14.54.32.jpeg" alt="Kritik Singh - Co-Founder & CEO">
+            <h3>Kritik Singh</h3>
+            <span class="title">Co-Founder</span>
+            <p>"Our vision is to provide a seamless, transparent experience for our clients. Every transaction is a partnership, and our commitment is to your prosperity, ensuring every move you make is a strategic one."</p>
+        </div>
+    </div>
+</section>
 
     <section class="section">
         <h2>Our Core Values</h2>
