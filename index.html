@@ -233,10 +233,17 @@
         margin-top: 0;
     }
 
+    /* Utility to contain floats */
     .clearfix::after {
         content: "";
         clear: both;
         display: table;
+    }
+    
+    /* Apply clearfix to CEO cards to handle the floated image */
+    .ceo-card {
+        /* This is a temporary fix for structure, the real fix is below in media query */
+        clear: both; 
     }
 
     /* GRID SECTION (Core Values & Listings) */
@@ -283,226 +290,7 @@
         letter-spacing: 0.5px;
     }
 
-    .grid-item-content p {
-        font-size: 1em;
-        color: #666;
-        margin-bottom: 20px;
-        line-height: 1.6;
-    }
-
-    /* BUTTONS AND FOOTER (Kept as is) */
-    .btn-gold {
-        display: inline-block;
-        background-color: #ffd700;
-        color: #333;
-        padding: 12px 25px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-weight: 700;
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-gold:hover {
-        background-color: #e6c200;
-        transform: translateY(-2px);
-    }
-
-    .footer {
-        background-color: #1a1a1a;
-        color: #ccc;
-        padding: 50px 30px;
-        text-align: center;
-        font-size: 0.9em;
-    }
-
-    .footer .social-links a {
-        color: #ffd700;
-        margin: 0 15px;
-        font-size: 1.5em;
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .footer .social-links a:hover {
-        color: #fff;
-    }
-
-    .footer p {
-        margin-top: 20px;
-    }
-
-    /* MODAL STYLES (Minor mobile adjustment) */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1001;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        /* Center the modal content */
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-    }
-    
-    /* Ensure modal content fits on very small screens */
-    .modal-content {
-        background-color: #fefefe;
-        margin: 0 auto; /* Removed old margin-top which was for non-flex centering */
-        padding: 20px;
-        border: 1px solid #888;
-        width: 90%;
-        max-width: 700px;
-        max-height: 90vh; /* Prevents overflow */
-        overflow-y: auto; /* Allows scrolling if content is too tall */
-        border-radius: 8px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-        position: relative;
-    }
-
-    .close-btn {
-        color: #aaa;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-        position: absolute;
-        top: 10px;
-        right: 20px;
-    }
-
-    .close-btn:hover,
-    .close-btn:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    /* ---------------------------------------------------- */
-    /* RESPONSIVENESS (MEDIA QUERIES)             */
-    /* ---------------------------------------------------- */
-    
-    /* Hamburger button visible only on small screens */
-    .menu-toggle {
-        display: none;
-        font-size: 2em;
-        color: #ffd700;
-        background: none;
-        border: none;
-        cursor: pointer;
-        z-index: 1002; /* Above the nav menu itself */
-    }
-    
-    /* Tablet & Mobile Layout: Max-width 1024px is a good breakpoint for large tablets */
-    @media (max-width: 1024px) {
-        .hero-content h1 {
-            font-size: 3.5em; /* Scale down for tablets */
-        }
-        .hero-content p {
-            font-size: 1.5em;
-        }
-        .section h2, .ceo-section h2 {
-            font-size: 3em; /* Scale down section headers */
-        }
-    }
-
-    /* Mobile Layout: Max-width 768px */
-    @media (max-width: 768px) {
-        /* HEADER & NAVIGATION */
-        .menu-toggle {
-            display: block; /* Show hamburger */
-        }
-        .main-header {
-            padding: 10px 15px; /* Less horizontal padding */
-        }
-        .main-header .nav-menu {
-            display: none !important; /* Hide menu by default on small screen */
-            flex-direction: column;
-            gap: 5px;
-            background-color: #1a1a1a;
-            width: 100%;
-            padding: 0;
-            position: absolute;
-            top: calc(60px + env(safe-area-inset-top));
-            left: 0;
-            z-index: 998; /* Below the main header */
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-            border-top: 1px solid #333;
-            text-align: left;
-        }
-        .nav-menu.active {
-            display: flex !important; /* Show menu when active */
-            padding: 10px 15px;
-        }
-        .main-header .nav-menu li {
-            padding: 8px 0;
-            border-bottom: 1px solid #2a2a2a;
-            display: block !important; /* Fixes list-item collapse issue */
-        }
-        .main-header .nav-menu li:last-child {
-            border-bottom: none;
-        }
-
-        /* HERO SECTION */
-        .hero-section {
-            height: 60vh; /* Shorter hero section */
-        }
-        .hero-content h1 {
-            font-size: 2.5em; /* Smaller hero heading on phones */
-            margin-bottom: 15px;
-        }
-        .hero-content p {
-            font-size: 1.1em; /* Smaller paragraph text */
-        }
-        
-        /* GENERAL SECTIONS */
-        .section, .ceo-section {
-            padding: 50px 5%; /* Less vertical padding */
-        }
-        .section h2, .ceo-section h2 {
-            font-size: 2.5em; /* Smaller section headers */
-            margin-bottom: 30px;
-        }
-        
-        /* CEO CARDS - STACKING AND IMAGE FIX */
-        .ceo-container {
-            gap: 30px;
-        }
-        .ceo-card {
-            max-width: 100%; /* Take full width */
-            text-align: center; /* Center content */
-        }
-        .ceo-card img {
-            float: none; /* Crucial: Remove float to allow centering */
-            margin: 0 auto 15px auto; /* Center image */
-            display: block;
-        }
-        /* Crucial: Explicitly center the text elements which were previously relying on the float */
-        .ceo-card h3, 
-        .ceo-card .title {
-            text-align: center; 
-        }
-        .ceo-card p {
-             /* Keep text aligned left/justified for readability, but clear float */
-             text-align: left;
-             clear: both; 
-        }
-
-        /* GRID SECTION */
-        .grid-container {
-            /* Since auto-fit is used with minmax(300px, 1fr), this will naturally stack 
-               to a single column on screens < 300px, which is good. */
-            gap: 30px;
-        }
-
-        /* FOOTER */
-        .footer {
-            padding: 40px 15px;
-        }
-    }
-</style>
+    .grid-item-content
 </head>
 <body>
 
