@@ -5,303 +5,292 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>WealthWave Realty - Luxurious UI</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-   <style>
-        /* CSS Variables for simplified control */
+    <style>
+    /* CSS Variables for simplified control */
+    :root {
+        --header-vertical-padding: 15px;
+        --logo-content-height: 30px;
+        --header-height-desktop: calc(var(--logo-content-height) + 2 * var(--header-vertical-padding)); /* 60px */
+        --ticker-height: 40px;
+        --status-bar-clearance: 0px; 
+        --total-fixed-height: calc(var(--header-height-desktop) + var(--ticker-height));
+    }
+
+    /* 1. BODY - Global Defensive Style */
+    body {
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+        padding-top: var(--total-fixed-height); 
+        
+        /* 🔥 CRITICAL FIX: Prevent all horizontal overflow */
+        overflow-x: hidden !important; 
+        max-width: 100% !important;
+        box-sizing: border-box; /* Ensure padding/borders don't cause overflow */
+    }
+
+    /* 2. MAIN HEADER (FIXED at top) - Desktop Default */
+    .main-header {
+        background-color: #1a1a1a;
+        color: white;
+        padding: var(--header-vertical-padding) 30px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 0;
+        left: 0;
+        /* Ensure the fixed header is exactly the viewport width */
+        width: 100vw; 
+        z-index: 1000;
+        box-sizing: border-box;
+        height: var(--header-height-desktop);
+    }
+
+    .main-header .logo {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5em;
+        font-weight: 700;
+        color: #ffd700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        text-decoration: none;
+        flex-shrink: 0; 
+        line-height: 1;
+    }
+
+    /* Standard Desktop Nav Styles (kept as is) */
+    .nav-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    .nav-menu {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 30px;
+    }
+    .nav-menu a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 1em;
+        transition: color 0.3s ease;
+    }
+    .nav-menu a:hover {
+        color: #ffd700;
+    }
+
+
+    /* 3. TICKER SECTION (FIXED below header) - Desktop Default */
+    .ticker-section {
+        position: fixed;
+        top: var(--header-height-desktop);
+        left: 0;
+        /* Ensure the fixed ticker is exactly the viewport width */
+        width: 100vw; 
+        background-color: #ffd700;
+        color: #1a1a1a;
+        padding: 8px 0;
+        /* Keep overflow hidden for the scrolling effect */
+        overflow: hidden; 
+        z-index: 999;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        white-space: nowrap;
+        height: var(--ticker-height);
+        box-sizing: border-box;
+    }
+    
+    /* Ensure the ticker content scrolls correctly within the fixed width */
+    .ticker {
+        display: inline-block;
+        animation: scroll-left 25s linear infinite;
+        padding-right: 100%;
+        font-weight: 500;
+        line-height: 1;
+        margin: 0;
+    }
+
+    @keyframes scroll-left {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-100%); }
+    }
+
+    /* General Content Styles (kept as is) */
+    .section, .ceo-section {
+        padding: 80px 5%;
+        text-align: center;
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+    }
+    .ceo-section { background-color: #f5f5f5; }
+    .section h2, .ceo-section h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5em;
+        color: #333;
+        margin-bottom: 40px;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 15px;
+        letter-spacing: 1px;
+    }
+    .ceo-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 50px;
+    }
+    .ceo-card {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        max-width: 500px;
+        text-align: left;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .ceo-card img {
+        width: 120px;
+        height: 120px;
+        max-width: 120px; 
+        max-height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        float: left;
+        margin-right: 25px;
+        border: 4px solid #ffd700;
+    }
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+    .footer {
+        background-color: #1a1a1a;
+        color: #ccc;
+        padding: 50px 30px;
+        text-align: center;
+        font-size: 0.9em;
+    }
+
+    /* 4. MOBILE RESPONSIVENESS (Max 768px) */
+    .menu-toggle {
+        display: none;
+        font-size: 2em;
+        color: #ffd700;
+        background: none;
+        border: none;
+        cursor: pointer;
+        line-height: 1; 
+    }
+
+    @media (max-width: 768px) {
+        
         :root {
-            --header-vertical-padding: 15px;
-            --logo-content-height: 30px;
-            --header-height-desktop: calc(var(--logo-content-height) + 2 * var(--header-vertical-padding)); /* 60px */
-            --ticker-height: 40px;
-            --status-bar-clearance: 0px; 
-            --total-fixed-height: calc(var(--header-height-desktop) + var(--ticker-height));
+            /* Use safe-area-inset-top for mobile notch/status bar clearance */
+            --status-bar-clearance: max(0px, env(safe-area-inset-top)); 
         }
-
-        /* 1. BODY - Desktop Default */
+        
         body {
-            margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
-            overflow-x: hidden;
-            line-height: 1.6;
-            padding-top: var(--total-fixed-height); 
+            /* Adjust body padding for fixed header + ticker + safe area */
+            padding-top: calc(var(--header-height-desktop) + var(--status-bar-clearance) + var(--ticker-height));
         }
 
-        /* 2. MAIN HEADER (FIXED at top) - Desktop Default */
         .main-header {
-            background-color: #1a1a1a;
-            color: white;
-            padding: var(--header-vertical-padding) 30px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            box-sizing: border-box;
-            height: var(--header-height-desktop);
+            height: auto; 
+            padding-top: calc(var(--header-vertical-padding) + var(--status-bar-clearance)); 
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 100%; /* Reset to 100% (from 100vw) for mobile container alignment */
         }
 
         .main-header .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5em;
-            font-weight: 700;
-            color: #ffd700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            text-decoration: none;
-            flex-shrink: 0; 
-            line-height: 1;
+            font-size: 1.4em; 
+            letter-spacing: 0.5px;
         }
-
-        .nav-container {
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .nav-menu {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-menu a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1em;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: #ffd700;
-        }
-
-        /* 3. TICKER SECTION (FIXED below header) - Desktop Default */
+        
         .ticker-section {
-            position: fixed;
-            top: var(--header-height-desktop);
-            left: 0;
-            width: 100%;
-            background-color: #ffd700;
-            color: #1a1a1a;
-            padding: 8px 0;
-            overflow: hidden;
-            z-index: 999;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            white-space: nowrap;
-            height: var(--ticker-height);
-            box-sizing: border-box;
-        }
-        
-        .ticker {
-            display: inline-block;
-            animation: scroll-left 25s linear infinite;
-            padding-right: 100%;
-            font-weight: 500;
-            line-height: 1;
-            margin: 0;
+            top: calc(var(--header-height-desktop) + var(--status-bar-clearance));
+            width: 100%; /* Reset to 100% (from 100vw) for mobile container alignment */
         }
 
-        .ticker span {
-            margin-right: 40px;
-            font-size: 1em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #1a1a1a;
-        }
-
-        @keyframes scroll-left {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-100%); }
-        }
-
-        /* General Content Styles */
-        .section {
-            padding: 80px 5%;
-            text-align: center;
-            background-color: #fff;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .section h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.5em;
-            color: #333;
-            margin-bottom: 40px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        /* CEO Section Styles */
-        .ceo-section {
-            padding: 80px 5%;
-            text-align: center;
-            background-color: #f5f5f5;
-        }
-
-        .ceo-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .ceo-card {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            max-width: 500px;
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        /* Explicitly set Desktop/Default Image Size */
-        .ceo-card img {
-            width: 120px;
-            height: 120px;
-            max-width: 120px; 
-            max-height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            float: left;
-            margin-right: 25px;
-            border: 4px solid #ffd700;
-        }
-        
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        /* Footer Styles */
-        .footer {
-            background-color: #1a1a1a;
-            color: #ccc;
-            padding: 50px 30px;
-            text-align: center;
-            font-size: 0.9em;
-        }
-
-        /* 4. MOBILE RESPONSIVENESS (Max 768px) */
         .menu-toggle {
-            display: none;
-            font-size: 2em;
-            color: #ffd700;
-            background: none;
-            border: none;
-            cursor: pointer;
-            line-height: 1; 
-        }
-
-        @media (max-width: 768px) {
-            
-            :root {
-                --status-bar-clearance: max(20px, env(safe-area-inset-top)); 
-            }
-            
-            body {
-                padding-top: calc(var(--header-height-desktop) + var(--status-bar-clearance) + var(--ticker-height));
-            }
-
-            .main-header {
-                height: auto; 
-                padding-top: calc(var(--header-vertical-padding) + var(--status-bar-clearance)); 
-                padding-left: 15px;
-                padding-right: 15px;
-            }
-
-            .main-header .logo {
-                /* Aggressive logo font reduction to prevent wrapping/congestion */
-                font-size: 1.4em; 
-                letter-spacing: 0.5px;
-            }
-            
-            .ticker-section {
-                top: calc(var(--header-height-desktop) + var(--status-bar-clearance));
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-            
-            /* Hide the entire NAV container by default */
-            .nav-container nav {
-                display: none; 
-            }
-            
-            /* 🛠️ FINAL FIX: When the toggle is active, show the NAV container */
-            .menu-toggle.active + nav {
-                display: block;
-            }
-
-            /* Mobile Menu Styling (FIXED POSITIONING) */
-            .nav-menu {
-                display: block;
-                max-height: 0; 
-                overflow: hidden;
-                width: 100vw; 
-                padding: 0;
-                margin: 0;
-                position: fixed; 
-                top: calc(var(--header-height-desktop) + var(--status-bar-clearance) + var(--ticker-height));
-                left: 0;
-                z-index: 9999;
-                background-color: #1a1a1a; /* Ensure the menu background is solid */
-                transition: max-height 0.4s ease-in-out;
-            }
-
-            .nav-menu.active {
-                max-height: 400px; 
-                padding: 15px 30px; 
-            }
-            
-            /* Mobile Image Size: Force small CEO images on mobile */
-            .ceo-card img {
-                width: 80px;
-                height: 80px;
-                max-width: 80px; 
-                max-height: 80px; 
-                margin-right: 15px;
-            }
-
-            /* Mobile Spacing Adjustments */
-            .section {
-                padding: 50px 5%; 
-            }
-            
-            .section h2 {
-                font-size: 2.5em;
-                margin-bottom: 25px; 
-            }
-            
-            .ceo-section {
-                padding: 50px 5%; 
-            }
+            display: block;
         }
         
-        /* Desktop: Ensure nav is always visible when not mobile */
-        @media (min-width: 769px) {
-            .nav-container nav {
-                display: block; 
-            }
-            /* Reset mobile override for desktop */
-            .menu-toggle.active + nav {
-                display: block;
-            }
+        /* Mobile Menu Positioning & Transition */
+        .nav-container nav {
+             display: block; /* Ensure the nav wrapper is visible for the list inside */
         }
-    </style>
+        
+        .nav-menu {
+            /* Reset for vertical menu stacking */
+            display: block;
+            flex-direction: column;
+            gap: 0;
+            
+            max-height: 0; 
+            overflow: hidden;
+            
+            /* 🔥 CRITICAL FIX: Use 100% width, NOT 100vw */
+            width: 100%; 
+            padding: 0;
+            margin: 0;
+            
+            position: fixed; 
+            top: calc(var(--header-height-desktop) + var(--status-bar-clearance) + var(--ticker-height));
+            left: 0;
+            z-index: 9999;
+            background-color: #1a1a1a; 
+            transition: max-height 0.4s ease-in-out;
+        }
+
+        .nav-menu.active {
+            max-height: 400px; 
+            padding: 15px 30px; 
+        }
+        
+        .nav-menu li {
+             /* Ensure list items take full width in the menu */
+            display: block; 
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        /* Mobile CEO Card adjustments (kept as is) */
+        .ceo-card img {
+            width: 80px;
+            height: 80px;
+            max-width: 80px; 
+            max-height: 80px; 
+            margin-right: 15px;
+        }
+
+        /* Mobile Spacing Adjustments (kept as is) */
+        .section, .ceo-section {
+            padding: 50px 5%; 
+        }
+        .section h2, .ceo-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px; 
+        }
+    }
+    
+    /* Desktop: Ensure nav is always visible when not mobile */
+    @media (min-width: 769px) {
+        .nav-container nav {
+            display: block; 
+        }
+    }
+</style>
+    
 
 </head>
 <body>
