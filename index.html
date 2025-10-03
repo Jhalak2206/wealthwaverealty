@@ -5,54 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>WealthWave Realty - Luxurious UI</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
+  <style>
     /* CSS Variables for simplified control */
-        /* ADD THESE STYLES TO YOUR EXISTING <style> BLOCK */
-
-/* (Add this new block near the top of your existing CSS) */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 80vh;
-    /* You must ensure this file path is correct and the image exists! */
-    background: url('Gemini_Generated_Image_8dxyq58dxyq58dxy.png') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-    box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4);
-    padding: 20px;
-}
-/* ... rest of your CSS ... */
-
-/* Find the @media (max-width: 768px) section: */
-@media (max-width: 768px) {
-    /* ... existing mobile styles ... */
-    
-    /* NEW: Force grid items to take full width on mobile */
-    .grid-item {
-        min-width: 100%;
-    }
-
-    /* NEW: General mobile adjustments for section content */
-    .section, .ceo-section {
-        padding: 50px 15px; /* Use smaller fixed padding instead of 5% */
-        box-sizing: border-box; /* Ensure padding doesn't push the width out */
-        width: 100%; /* Explicitly set width to 100% */
-    }
-
-    .hero-section {
-        height: 50vh; /* Make hero smaller on mobile */
-    }
-    .hero-content h1 {
-        font-size: 2.5em; 
-    }
-    .hero-content p {
-        font-size: 1.1em;
-    }
-    /* ... rest of the media query ... */
-}
     :root {
         --header-vertical-padding: 15px;
         --logo-content-height: 30px;
@@ -73,7 +27,7 @@
         
         /* 🔥 CRITICAL FIX: Prevent all horizontal overflow */
         overflow-x: hidden !important; 
-        max-width: 100% !important;
+        max-width: 100vw !important; /* Use 100vw defensively */
         box-sizing: border-box; /* Ensure padding/borders don't cause overflow */
     }
 
@@ -108,7 +62,7 @@
         line-height: 1;
     }
 
-    /* Standard Desktop Nav Styles (kept as is) */
+    /* Standard Desktop Nav Styles */
     .nav-container {
         display: flex;
         align-items: center;
@@ -143,7 +97,6 @@
         background-color: #ffd700;
         color: #1a1a1a;
         padding: 8px 0;
-        /* Keep overflow hidden for the scrolling effect */
         overflow: hidden; 
         z-index: 999;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -152,7 +105,6 @@
         box-sizing: border-box;
     }
     
-    /* Ensure the ticker content scrolls correctly within the fixed width */
     .ticker {
         display: inline-block;
         animation: scroll-left 25s linear infinite;
@@ -166,13 +118,45 @@
         0% { transform: translateX(0%); }
         100% { transform: translateX(-100%); }
     }
+    
+    /* 4. HERO SECTION (NEW STYLES ADDED) */
+    .hero-section {
+        position: relative;
+        width: 100%;
+        height: 80vh;
+        /* Replace with a valid image path */
+        background: url('Gemini_Generated_Image_8dxyq58dxyq58dxy.png') no-repeat center center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        /* Overlay to make text readable */
+        box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.4); 
+        padding: 20px;
+    }
+    .hero-content h1 {
+        font-family: 'Playfair Display', serif;
+        font-size: 4.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    }
+    .hero-content p {
+        font-size: 1.2em;
+        max-width: 700px;
+        margin: 0 auto;
+    }
 
-    /* General Content Styles (kept as is) */
+
+    /* 5. GENERAL CONTENT & GRID STYLES */
     .section, .ceo-section {
-        padding: 80px 5%;
+        padding: 80px 5%; /* Desktop: large side padding */
         text-align: center;
         background-color: #fff;
         border-bottom: 1px solid #eee;
+        /* Ensure content width is handled safely */
+        box-sizing: border-box;
+        width: 100%;
     }
     .ceo-section { background-color: #f5f5f5; }
     .section h2, .ceo-section h2 {
@@ -217,6 +201,54 @@
         clear: both;
         display: table;
     }
+    
+    /* Grid Styles - NEW */
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+        text-align: left;
+    }
+    .grid-item {
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+    }
+    .grid-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        max-width: 100%; /* Safety fix */
+    }
+    .grid-item-content {
+        padding: 25px;
+        flex-grow: 1;
+    }
+    .grid-item-content h3 {
+        font-family: 'Playfair Display', serif;
+        color: #1a1a1a;
+        font-size: 1.8em;
+        margin-top: 0;
+    }
+    .btn-gold {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background-color: #ffd700;
+        color: #1a1a1a;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 700;
+        transition: background-color 0.3s ease;
+    }
+    .btn-gold:hover {
+        background-color: #e0b000;
+    }
+
     .footer {
         background-color: #1a1a1a;
         color: #ccc;
@@ -225,7 +257,7 @@
         font-size: 0.9em;
     }
 
-    /* 4. MOBILE RESPONSIVENESS (Max 768px) */
+    /* 6. MOBILE RESPONSIVENESS (Max 768px) */
     .menu-toggle {
         display: none;
         font-size: 2em;
@@ -239,12 +271,10 @@
     @media (max-width: 768px) {
         
         :root {
-            /* Use safe-area-inset-top for mobile notch/status bar clearance */
             --status-bar-clearance: max(0px, env(safe-area-inset-top)); 
         }
         
         body {
-            /* Adjust body padding for fixed header + ticker + safe area */
             padding-top: calc(var(--header-height-desktop) + var(--status-bar-clearance) + var(--ticker-height));
         }
 
@@ -253,7 +283,7 @@
             padding-top: calc(var(--header-vertical-padding) + var(--status-bar-clearance)); 
             padding-left: 15px;
             padding-right: 15px;
-            width: 100%; /* Reset to 100% (from 100vw) for mobile container alignment */
+            width: 100%; 
         }
 
         .main-header .logo {
@@ -263,7 +293,7 @@
         
         .ticker-section {
             top: calc(var(--header-height-desktop) + var(--status-bar-clearance));
-            width: 100%; /* Reset to 100% (from 100vw) for mobile container alignment */
+            width: 100%; 
         }
 
         .menu-toggle {
@@ -272,23 +302,18 @@
         
         /* Mobile Menu Positioning & Transition */
         .nav-container nav {
-             display: block; /* Ensure the nav wrapper is visible for the list inside */
+             display: block; 
         }
         
         .nav-menu {
-            /* Reset for vertical menu stacking */
             display: block;
             flex-direction: column;
             gap: 0;
-            
             max-height: 0; 
             overflow: hidden;
-            
-            /* 🔥 CRITICAL FIX: Use 100% width, NOT 100vw */
-            width: 100%; 
+            width: 100%; /* CRITICAL FIX: Use 100% width */
             padding: 0;
             margin: 0;
-            
             position: fixed; 
             top: calc(var(--header-height-desktop) + var(--status-bar-clearance) + var(--ticker-height));
             left: 0;
@@ -303,29 +328,46 @@
         }
         
         .nav-menu li {
-             /* Ensure list items take full width in the menu */
             display: block; 
             width: 100%;
             padding: 10px 0;
             border-bottom: 1px solid #333;
         }
         
-        /* Mobile CEO Card adjustments (kept as is) */
+        /* 🔥 CRITICAL FIX: Change 5% horizontal padding to a fixed pixel value */
+        .section, .ceo-section {
+            padding: 50px 15px; /* Safely handles horizontal space */
+            width: 100%; 
+            box-sizing: border-box;
+        }
+
+        .section h2, .ceo-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px; 
+        }
+
+        /* Hero Section Mobile Adjustments - NEW */
+        .hero-section {
+            height: 50vh;
+        }
+        .hero-content h1 {
+            font-size: 2.5em;
+        }
+        .hero-content p {
+            font-size: 1em;
+        }
+
+        /* Grid Mobile Adjustments - NEW */
+        .grid-container {
+            grid-template-columns: 1fr; /* Force single column stack */
+        }
+        
         .ceo-card img {
             width: 80px;
             height: 80px;
             max-width: 80px; 
             max-height: 80px; 
             margin-right: 15px;
-        }
-
-        /* Mobile Spacing Adjustments (kept as is) */
-        .section, .ceo-section {
-            padding: 50px 5%; 
-        }
-        .section h2, .ceo-section h2 {
-            font-size: 2.5em;
-            margin-bottom: 25px; 
         }
     }
     
@@ -336,8 +378,6 @@
         }
     }
 </style>
-    
-
 </head>
 <body>
 
